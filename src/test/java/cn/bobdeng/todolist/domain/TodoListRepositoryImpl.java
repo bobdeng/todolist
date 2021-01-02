@@ -10,8 +10,9 @@ public class TodoListRepositoryImpl implements TodoListRepository {
     private List<TodoItem> items = new ArrayList<>();
 
     @Override
-    public void save(TodoItem todoItem) {
+    public TodoItem save(TodoItem todoItem) {
         items.add(todoItem);
+        return todoItem;
     }
 
     @Override

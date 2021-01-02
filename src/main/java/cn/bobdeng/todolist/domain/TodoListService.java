@@ -11,7 +11,7 @@ public class TodoListService {
         this.todoListRepository = todoListRepository;
     }
 
-    public void newItem(String todoItem) {
-        todoListRepository.save(new TodoItem(1, todoItem));
+    public TodoItem newItem(String todoItem) {
+        return todoListRepository.save(new TodoItem(1, todoItem));
     }
 }

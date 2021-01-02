@@ -10,15 +10,17 @@ import java.util.stream.Collectors;
 @Service
 public class TodoListRepositoryFlatFileImpl implements TodoListRepository {
     @Override
-    public void save(TodoItem todoItem) {
+    public TodoItem save(TodoItem todoItem) {
         try {
             File file = getFile();
             FileOutputStream outputStream = new FileOutputStream(file);
             PrintStream printStream = new PrintStream(outputStream);
             printStream.println(new Gson().toJson(todoItem));
+            return todoItem;
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return todoItem;
     }
 
     private File getFile() throws IOException {

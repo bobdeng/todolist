@@ -18,6 +18,6 @@ public class CommandController implements CommandLineRunner {
         if (args.length < 2) {
             return;
         }
-        actionFactory.getAction(args[1]).execute(args);
+        actionFactory.getAction(args[0]).execute(args);
     }
 }

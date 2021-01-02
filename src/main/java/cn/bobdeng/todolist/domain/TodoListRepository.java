@@ -3,7 +3,7 @@ package cn.bobdeng.todolist.domain;
 import java.util.List;
 
 public interface TodoListRepository {
-    void save(TodoItem todoItem);
+    TodoItem save(TodoItem todoItem);
 
     List<TodoItem> all();
 }

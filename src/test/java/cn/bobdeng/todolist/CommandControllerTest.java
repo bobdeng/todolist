@@ -31,7 +31,7 @@ public class CommandControllerTest {
 
     @Test
     public void Given列表为空_When添加新列表_Then列表有一条() throws Exception {
-        commandController.run(new String[]{"todo add item1"});
+        commandController.run(new String[]{"add item1"});
         assertThat(todoListRepositoryFlatFile.all(), snapshotMatch(this, "new_item_result"));
     }
 }

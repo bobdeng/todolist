@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@Profile("ac")
 public class DummyConsolePrinter implements ConsolePrinter {
     private List<String> lines = new ArrayList<>();
 
