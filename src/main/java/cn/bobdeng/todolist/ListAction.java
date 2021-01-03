@@ -14,14 +14,22 @@ public class ListAction implements Action {
     @Override
     public void execute(String[] args) {
         if (args.length == 2) {
-            todoListFacade.printAll();
-            CountByStatus count = todoListFacade.countByStatus();
-            todoListFacade.printTail(count.toStringOfAll());
+            listAll();
             return;
         }
+        listOnlyDoing();
+    }
+
+    private void listOnlyDoing() {
         todoListFacade.printAllDoing();
         CountByStatus count = todoListFacade.countByStatus();
         todoListFacade.printTail(count.toStringOfDoing());
+    }
+
+    private void listAll() {
+        todoListFacade.printAll();
+        CountByStatus count = todoListFacade.countByStatus();
+        todoListFacade.printTail(count.toStringOfAll());
     }
 
 
