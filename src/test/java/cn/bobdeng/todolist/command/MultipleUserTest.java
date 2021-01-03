@@ -1,5 +1,7 @@
-package cn.bobdeng.todolist;
+package cn.bobdeng.todolist.command;
 
+import cn.bobdeng.todolist.DummyConsolePrinter;
+import cn.bobdeng.todolist.Session;
 import cn.bobdeng.todolist.command.CommandController;
 import cn.bobdeng.todolist.domain.todo.TodoListRepository;
 import org.junit.Before;
