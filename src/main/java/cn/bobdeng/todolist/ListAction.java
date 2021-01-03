@@ -13,8 +13,21 @@ public class ListAction implements Action {
 
     @Override
     public void execute(String[] args) {
+        if (args.length == 2) {
+            todoListFacade.printAll();
+            CountByStatus count = todoListFacade.countByStatus();
+            todoListFacade.printTail("Total " + count.getTotal() + " " + getItems(count.getTotal()) + ", " + count.getDone() + " " + getItems(count.getDone()) + " done");
+            return;
+        }
         todoListFacade.printAllDoing();
         CountByStatus count = todoListFacade.countByStatus();
-        todoListFacade.printTail("Total " + count.getTotalDoing() + " items");
+        todoListFacade.printTail("Total " + count.getTotalDoing() + " " + getItems(count.getTotalDoing()));
+    }
+
+    private String getItems(int total) {
+        if (total <= 1) {
+            return "item";
+        }
+        return "items";
     }
 }

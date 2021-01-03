@@ -69,4 +69,12 @@ public class CommandControllerTest {
         commandController.run(new String[]{"list"});
         assertThat(dummyConsolePrinter.getLines(), snapshotMatch(this, "list_doing"));
     }
+
+    @Test
+    public void Given有两条其中一条已完成_When列出所有_Then列出所有() {
+        todoListRepositoryFlatFile.insert(new TodoItem(1, "item1"));
+        todoListRepositoryFlatFile.insert(new TodoItem(2, "item2", ItemStatus.DONE));
+        commandController.run(new String[]{"list", "--all"});
+        assertThat(dummyConsolePrinter.getLines(), snapshotMatch(this, "list_all"));
+    }
 }
