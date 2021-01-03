@@ -6,4 +6,6 @@ public interface TodoListRepository {
     TodoItem save(TodoItem todoItem);
 
     List<TodoItem> all();
+
+    void clear();
 }

@@ -6,17 +6,25 @@ import org.springframework.stereotype.Service;
 import java.io.*;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class TodoListRepositoryFlatFileImpl implements TodoListRepository {
     @Override
     public TodoItem save(TodoItem todoItem) {
         try {
+            List<TodoItem> allItems = all();
+            int newId = allItems.stream()
+                    .mapToInt(TodoItem::getId)
+                    .max().orElse(0) + 1;
             File file = getFile();
             FileOutputStream outputStream = new FileOutputStream(file);
             PrintStream printStream = new PrintStream(outputStream);
-            printStream.println(new Gson().toJson(todoItem));
-            return todoItem;
+            TodoItem newTodoItem = new TodoItem(newId, todoItem.getItem());
+            Stream.concat(allItems.stream(), Stream.of(newTodoItem))
+                    .map(item -> new Gson().toJson(item))
+                    .forEach(printStream::println);
+            return newTodoItem;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -44,5 +52,16 @@ public class TodoListRepositoryFlatFileImpl implements TodoListRepository {
             throw new RuntimeException(e);
         }
 
+    }
+
+    @Override
+    public void clear() {
+        try {
+            boolean delete = getFile().delete();
+            assert delete;
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
 }

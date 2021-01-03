@@ -19,4 +19,9 @@ public class TodoListRepositoryImpl implements TodoListRepository {
     public List<TodoItem> all() {
         return new ArrayList<>(items);
     }
+
+    @Override
+    public void clear() {
+        items.clear();
+    }
 }
