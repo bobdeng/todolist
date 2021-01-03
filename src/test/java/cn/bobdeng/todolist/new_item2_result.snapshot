@@ -1,11 +1,11 @@
 [
   {
-    "id": 1,
+    "index": 1,
     "item": "item1",
     "status": "DOING"
   },
   {
-    "id": 2,
+    "index": 2,
     "item": "item2",
     "status": "DOING"
   }

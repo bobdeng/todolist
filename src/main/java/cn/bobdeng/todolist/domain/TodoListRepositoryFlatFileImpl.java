@@ -15,7 +15,7 @@ public class TodoListRepositoryFlatFileImpl implements TodoListRepository {
         try {
             List<TodoItem> allItems = all();
             int newId = allItems.stream()
-                    .mapToInt(TodoItem::getId)
+                    .mapToInt(TodoItem::getIndex)
                     .max().orElse(0) + 1;
             TodoItem newTodoItem = new TodoItem(newId, todoItem.getItem(), todoItem.getStatus());
             Stream<TodoItem> allItemsStream = Stream.concat(allItems.stream(), Stream.of(newTodoItem));
@@ -75,7 +75,7 @@ public class TodoListRepositoryFlatFileImpl implements TodoListRepository {
     public void update(TodoItem todoItem) {
         Stream<TodoItem> todoItemStream = all().stream()
                 .map(item -> {
-                    if (item.getId() == todoItem.getId()) {
+                    if (item.getIndex() == todoItem.getIndex()) {
                         return item.complete();
                     }
                     return item;

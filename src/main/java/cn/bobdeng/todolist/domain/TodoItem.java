@@ -4,18 +4,18 @@ import lombok.Data;
 
 @Data
 public class TodoItem {
-    private int id;
+    private int index;
     private String item;
     private ItemStatus status;
 
-    public TodoItem(int id, String item) {
-        this.id = id;
+    public TodoItem(int index, String item) {
+        this.index = index;
         this.item = item;
         this.status = ItemStatus.DOING;
     }
 
-    public TodoItem(int id, String item, ItemStatus status) {
-        this.id = id;
+    public TodoItem(int index, String item, ItemStatus status) {
+        this.index = index;
         this.item = item;
         this.status = status;
     }
@@ -23,13 +23,13 @@ public class TodoItem {
     @Override
     public String toString() {
         if (status == ItemStatus.DONE) {
-            return String.format("%d. [Done] %s", this.id, this.item);
+            return String.format("%d. [Done] %s", this.index, this.item);
         }
-        return String.format("%d. %s", this.id, this.item);
+        return String.format("%d. %s", this.index, this.item);
     }
 
     public TodoItem complete() {
-        return new TodoItem(id, item, ItemStatus.DONE);
+        return new TodoItem(index, item, ItemStatus.DONE);
     }
 
     public boolean isComplete() {

@@ -15,6 +15,6 @@ public class AddAction implements Action {
     public void execute(String[] args) {
         TodoItem newItem = todoListFacade.newItem(args[1]);
         todoListFacade.printAll();
-        todoListFacade.printTail("Item " + newItem.getId() + " added");
+        todoListFacade.printTail("Item " + newItem.getIndex() + " added");
     }
 }

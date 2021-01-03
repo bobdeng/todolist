@@ -16,7 +16,7 @@ class TodoListServiceTest {
 
     @BeforeEach
     public void setup() {
-        dummyDao = new DummyDao<>(TodoItem.class, "id", new AutoIntegerIdGenerator());
+        dummyDao = new DummyDao<>(TodoItem.class, "index", new AutoIntegerIdGenerator());
         todoListRepository = new TodoListRepositoryImpl(dummyDao);
         todoListService = new TodoListService(todoListRepository);
     }

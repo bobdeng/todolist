@@ -1,3 +1,2 @@
-{"id":1,"item":"item1","status":"DOING"}
-{"id":2,"item":"item2","status":"DONE"}
-{"id":3,"item":"world","status":"DONE"}
+{"index":1,"item":"item1","status":"DOING"}
+{"index":2,"item":"item2","status":"DONE"}

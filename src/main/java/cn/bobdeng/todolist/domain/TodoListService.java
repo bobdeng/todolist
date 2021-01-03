@@ -22,7 +22,7 @@ public class TodoListService {
 
     public void complete(int id) {
         todoListRepository.all().stream()
-                .filter(todoItem -> todoItem.getId() == id)
+                .filter(todoItem -> todoItem.getIndex() == id)
                 .findFirst()
                 .map(TodoItem::complete)
                 .ifPresent(todoListRepository::update);
