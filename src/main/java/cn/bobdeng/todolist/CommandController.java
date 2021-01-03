@@ -25,7 +25,11 @@ public class CommandController implements CommandLineRunner {
         if (args.length < 1) {
             return;
         }
-        executeAction(args);
+        try {
+            executeAction(args);
+        } catch (Exception e) {
+            consolePrinter.printLn("error: " + e.getMessage());
+        }
         System.out.println();
         consolePrinter.print("todo ");
     }
