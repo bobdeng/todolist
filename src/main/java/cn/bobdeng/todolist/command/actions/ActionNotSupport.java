@@ -1,6 +1,6 @@
-package cn.bobdeng.todolist.actions;
+package cn.bobdeng.todolist.command.actions;
 
-import cn.bobdeng.todolist.ConsolePrinter;
+import cn.bobdeng.todolist.command.ConsolePrinter;
 import org.springframework.stereotype.Service;
 
 @Service

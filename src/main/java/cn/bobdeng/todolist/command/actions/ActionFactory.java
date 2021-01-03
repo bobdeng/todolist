@@ -1,4 +1,4 @@
-package cn.bobdeng.todolist.actions;
+package cn.bobdeng.todolist.command.actions;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;

@@ -1,5 +1,6 @@
 package cn.bobdeng.todolist;
 
+import cn.bobdeng.todolist.command.ConsoleReader;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 

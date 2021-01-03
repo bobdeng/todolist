@@ -1,4 +1,4 @@
-package cn.bobdeng.todolist;
+package cn.bobdeng.todolist.command;
 
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;

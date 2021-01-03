@@ -1,4 +1,4 @@
-package cn.bobdeng.todolist;
+package cn.bobdeng.todolist.command;
 
 import cn.bobdeng.todolist.domain.todo.CountByStatus;
 import cn.bobdeng.todolist.domain.todo.TodoItem;

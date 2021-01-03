@@ -1,7 +1,7 @@
-package cn.bobdeng.todolist.actions;
+package cn.bobdeng.todolist.command.actions;
 
-import cn.bobdeng.todolist.ConsolePrinter;
-import cn.bobdeng.todolist.ConsoleReader;
+import cn.bobdeng.todolist.command.ConsolePrinter;
+import cn.bobdeng.todolist.command.ConsoleReader;
 import cn.bobdeng.todolist.Session;
 import cn.bobdeng.todolist.domain.user.UserService;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,6 @@
-package cn.bobdeng.todolist.actions;
+package cn.bobdeng.todolist.command.actions;
 
-import cn.bobdeng.todolist.TodoListFacade;
+import cn.bobdeng.todolist.command.TodoListFacade;
 import cn.bobdeng.todolist.domain.todo.CountByStatus;
 import org.springframework.stereotype.Service;
 

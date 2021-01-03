@@ -1,7 +1,7 @@
 package cn.bobdeng.todolist;
 
+import cn.bobdeng.todolist.command.ConsolePrinter;
 import lombok.Getter;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

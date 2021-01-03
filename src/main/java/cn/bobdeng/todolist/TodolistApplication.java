@@ -1,5 +1,6 @@
 package cn.bobdeng.todolist;
 
+import cn.bobdeng.todolist.command.CommandController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
