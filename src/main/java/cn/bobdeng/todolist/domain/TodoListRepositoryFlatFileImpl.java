@@ -1,5 +1,6 @@
 package cn.bobdeng.todolist.domain;
 
+import cn.bobdeng.todolist.CurrentUser;
 import com.google.gson.Gson;
 import org.springframework.stereotype.Service;
 
@@ -31,7 +32,7 @@ public class TodoListRepositoryFlatFileImpl implements TodoListRepository {
     }
 
     private File getFile() throws IOException {
-        File file = new File("items.txt");
+        File file = new File("items-" + CurrentUser.user + ".txt");
         if (!file.exists()) {
             boolean newFileSuccess = file.createNewFile();
             assert newFileSuccess;
