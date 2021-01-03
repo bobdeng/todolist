@@ -14,4 +14,9 @@ public class ConsoleReaderSystemImpl implements ConsoleReader {
     public String readLine() throws IOException {
         return new BufferedReader(new InputStreamReader(System.in)).readLine();
     }
+
+    @Override
+    public String readPassword() {
+        return String.valueOf(System.console().readPassword());
+    }
 }

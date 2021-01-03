@@ -4,6 +4,7 @@ import cn.bobdeng.todolist.command.ConsoleReader;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +19,11 @@ public class DummyConsoleReader implements ConsoleReader {
 
     @Override
     public String readLine() {
+        return buffer.remove(0);
+    }
+
+    @Override
+    public String readPassword() {
         return buffer.remove(0);
     }
 }
