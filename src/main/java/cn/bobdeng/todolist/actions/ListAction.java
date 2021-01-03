@@ -1,5 +1,6 @@
-package cn.bobdeng.todolist;
+package cn.bobdeng.todolist.actions;
 
+import cn.bobdeng.todolist.TodoListFacade;
 import cn.bobdeng.todolist.domain.todo.CountByStatus;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,11 @@ public class ListAction implements Action {
             return;
         }
         listOnlyDoing();
+    }
+
+    @Override
+    public String actionName() {
+        return "list";
     }
 
     private void listOnlyDoing() {

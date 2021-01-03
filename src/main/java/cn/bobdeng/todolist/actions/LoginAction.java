@@ -1,5 +1,8 @@
-package cn.bobdeng.todolist;
+package cn.bobdeng.todolist.actions;
 
+import cn.bobdeng.todolist.ConsolePrinter;
+import cn.bobdeng.todolist.ConsoleReader;
+import cn.bobdeng.todolist.CurrentUser;
 import cn.bobdeng.todolist.domain.user.UserService;
 import org.springframework.stereotype.Service;
 
@@ -32,5 +35,10 @@ public class LoginAction implements Action {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public String actionName() {
+        return "login";
     }
 }

@@ -17,7 +17,7 @@ public class TodoListFacade {
         this.consolePrinter = consolePrinter;
     }
 
-    void printAll() {
+    public void printAll() {
         print(todoItem -> true);
     }
 

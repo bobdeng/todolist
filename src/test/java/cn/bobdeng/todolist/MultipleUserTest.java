@@ -25,12 +25,17 @@ public class MultipleUserTest {
 
     @Before
     public void setup() {
+        CurrentUser.user = "user1";
         todoListRepository.clear();
+        CurrentUser.user = "user2";
+        todoListRepository.clear();
+        dummyConsolePrinter.clear();
     }
     @Test
     public void Given空的列表_When以用户1增加选项_Then切换到用户2读不到() {
         CurrentUser.user = "user1";
         commandController.run("add", "待办事项1");
+        System.out.println(dummyConsolePrinter.getLines());
         assertThat(dummyConsolePrinter.getLines(), snapshotMatch(this, "new_item_user1"));
         dummyConsolePrinter.clear();
         CurrentUser.user = "user2";
