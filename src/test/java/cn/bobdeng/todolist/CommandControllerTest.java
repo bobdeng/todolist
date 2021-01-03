@@ -25,11 +25,12 @@ public class CommandControllerTest {
     DummyConsolePrinter dummyConsolePrinter;
     @Autowired
     TodoListRepositoryFlatFileImpl todoListRepositoryFlatFile;
-
+    @Autowired
+    Session session;
     @Before
     public void setup() {
         dummyConsolePrinter.clear();
-        CurrentUser.user = "user1";
+        session.loginWith("user1");
         todoListRepositoryFlatFile.clear();
     }
 
@@ -81,7 +82,7 @@ public class CommandControllerTest {
 
     @Test
     public void Given没有登录_When执行List_Then返回请登录() {
-        CurrentUser.user = null;
+        session.logout();
         commandController.run("list", "--all");
         assertThat(dummyConsolePrinter.getLines(), snapshotMatch(this, "not_login"));
     }

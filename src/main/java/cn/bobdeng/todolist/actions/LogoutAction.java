@@ -1,20 +1,22 @@
 package cn.bobdeng.todolist.actions;
 
 import cn.bobdeng.todolist.ConsolePrinter;
-import cn.bobdeng.todolist.CurrentUser;
+import cn.bobdeng.todolist.Session;
 import org.springframework.stereotype.Service;
 
 @Service
-public class LogoutAction implements Action,NeedLogin {
+public class LogoutAction implements Action, NeedLogin {
     private final ConsolePrinter consolePrinter;
+    private final Session session;
 
-    public LogoutAction(ConsolePrinter consolePrinter) {
+    public LogoutAction(ConsolePrinter consolePrinter, Session session) {
         this.consolePrinter = consolePrinter;
+        this.session = session;
     }
 
     @Override
     public void execute(String[] args) {
-        CurrentUser.user = null;
+        session.logout();
         consolePrinter.printLn("Logout success!");
     }
 

@@ -12,10 +12,12 @@ import org.springframework.stereotype.Service;
 public class CommandController implements CommandLineRunner {
     private final ActionFactory actionFactory;
     private final ConsolePrinter consolePrinter;
+    private final Session session;
 
-    public CommandController(ActionFactory actionFactory, ConsolePrinter consolePrinter) {
+    public CommandController(ActionFactory actionFactory, ConsolePrinter consolePrinter, Session session) {
         this.actionFactory = actionFactory;
         this.consolePrinter = consolePrinter;
+        this.session = session;
     }
 
     @Override
@@ -29,7 +31,7 @@ public class CommandController implements CommandLineRunner {
 
     private void executeAction(String[] args) {
         Action action = actionFactory.getAction(args[0]);
-        if (action instanceof NeedLogin && CurrentUser.user == null) {
+        if (action instanceof NeedLogin && !session.loggedIn()) {
             consolePrinter.printLn("Please login first!");
             return;
         }

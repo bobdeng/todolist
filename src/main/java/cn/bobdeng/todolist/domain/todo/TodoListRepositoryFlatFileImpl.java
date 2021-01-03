@@ -1,6 +1,6 @@
 package cn.bobdeng.todolist.domain.todo;
 
-import cn.bobdeng.todolist.CurrentUser;
+import cn.bobdeng.todolist.Session;
 import com.google.gson.Gson;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +11,12 @@ import java.util.stream.Stream;
 
 @Service
 public class TodoListRepositoryFlatFileImpl implements TodoListRepository {
+    private final Session session;
+
+    public TodoListRepositoryFlatFileImpl(Session session) {
+        this.session = session;
+    }
+
     @Override
     public TodoItem insert(TodoItem todoItem) {
         try {
@@ -32,7 +38,7 @@ public class TodoListRepositoryFlatFileImpl implements TodoListRepository {
     }
 
     private File getFile() throws IOException {
-        File file = new File("items-" + CurrentUser.user + ".txt");
+        File file = new File("items-" + session.currentUser() + ".txt");
         if (!file.exists()) {
             boolean newFileSuccess = file.createNewFile();
             assert newFileSuccess;

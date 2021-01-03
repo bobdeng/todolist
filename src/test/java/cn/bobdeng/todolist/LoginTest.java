@@ -29,11 +29,13 @@ public class LoginTest {
     DummyConsolePrinter consolePrinter;
     @Autowired
     CommandController commandController;
+    @Autowired
+    Session session;
 
     @Before
     public void setup() {
         dummyConsoleReader.setBuffer(Arrays.asList("123456"));
-        CurrentUser.user = null;
+        session.logout();
         consolePrinter.clear();
     }
 
@@ -41,7 +43,7 @@ public class LoginTest {
     public void Given用户密码正确_When登录_Then登录成功() {
         userRepository.insert(new User("user1", "123456"));
         commandController.run("login", "-u", "user1");
-        assertThat(CurrentUser.user, is("user1"));
+        assertThat(session.currentUser(), is("user1"));
         assertThat(consolePrinter.getLines(), snapshotMatch(this, "login_success"));
     }
 
@@ -49,15 +51,15 @@ public class LoginTest {
     public void Given用户密码错误_When登录_Then登录失败() {
         userRepository.insert(new User("user1", "123455"));
         commandController.run("login", "-u", "user1");
-        assertThat(CurrentUser.user, nullValue());
+        assertThat(session.currentUser(), nullValue());
         assertThat(consolePrinter.getLines(), snapshotMatch(this, "login_fail"));
     }
 
     @Test
     public void Given已经登录_When登出_Then当前用户为空() {
-        CurrentUser.user = "user1";
+        session.loginWith("user1");
         commandController.run("logout");
-        assertThat(CurrentUser.user, nullValue());
+        assertThat(session.currentUser(), nullValue());
         assertThat(consolePrinter.getLines(), snapshotMatch(this, "logout"));
     }
 }
