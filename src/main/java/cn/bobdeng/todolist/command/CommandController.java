@@ -37,10 +37,14 @@ public class CommandController implements CommandLineRunner {
 
     private void executeAction(String[] args) {
         Command action = actionFactory.getAction(args[0]);
-        if (action instanceof CommandNeedLogin && !session.loggedIn()) {
+        if (actionNeedLogin(action)) {
             consolePrinter.printLn("Please login first!");
             return;
         }
         action.execute(args);
+    }
+
+    private boolean actionNeedLogin(Command action) {
+        return action instanceof CommandNeedLogin && !session.loggedIn();
     }
 }
