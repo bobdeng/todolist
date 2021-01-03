@@ -1,10 +1,7 @@
 package cn.bobdeng.todolist.domain.todo;
 
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 
-@Service
 public class TodoListService {
     private final TodoListRepository todoListRepository;
 
@@ -22,9 +19,9 @@ public class TodoListService {
         return todoListRepository.all();
     }
 
-    public void complete(int id) {
+    public void complete(int index) {
         todoListRepository.all().stream()
-                .filter(todoItem -> todoItem.getIndex() == id)
+                .filter(todoItem -> todoItem.isIndex(index))
                 .findFirst()
                 .map(TodoItem::complete)
                 .ifPresent(todoListRepository::update);

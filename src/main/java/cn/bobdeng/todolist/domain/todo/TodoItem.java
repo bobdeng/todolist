@@ -39,4 +39,8 @@ public class TodoItem {
     public boolean isDoing() {
         return this.status == ItemStatus.DOING;
     }
+
+    public boolean isIndex(int index) {
+        return this.index == index;
+    }
 }
