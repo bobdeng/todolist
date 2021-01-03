@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
 
 @Service
 @Profile("release")
-public class ConsoleReaderImpl implements ConsoleReader {
+public class ConsoleReaderSystemImpl implements ConsoleReader {
     @Override
     public String readLine() throws IOException {
         return new BufferedReader(new InputStreamReader(System.in)).readLine();
