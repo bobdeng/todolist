@@ -5,7 +5,7 @@ import cn.bobdeng.todolist.CurrentUser;
 import org.springframework.stereotype.Service;
 
 @Service
-public class LogoutAction implements Action {
+public class LogoutAction implements Action,NeedLogin {
     private final ConsolePrinter consolePrinter;
 
     public LogoutAction(ConsolePrinter consolePrinter) {

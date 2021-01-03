@@ -5,7 +5,7 @@ import cn.bobdeng.todolist.domain.todo.CountByStatus;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ListAction implements Action {
+public class ListAction implements Action,NeedLogin {
     private final TodoListFacade todoListFacade;
 
     public ListAction(TodoListFacade todoListFacade) {

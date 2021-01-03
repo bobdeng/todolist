@@ -29,12 +29,13 @@ public class CommandControllerTest {
     @Before
     public void setup() {
         dummyConsolePrinter.clear();
+        CurrentUser.user = "user1";
         todoListRepositoryFlatFile.clear();
     }
 
     @Test
-    public void Given列表为空_When添加新列表_Then列表有一条() throws Exception {
-        commandController.run(new String[]{"add", "item1"});
+    public void Given列表为空_When添加新列表_Then列表有一条() {
+        commandController.run("add", "item1");
         assertThat(todoListRepositoryFlatFile.all(), snapshotMatch(this, "new_item_result"));
         assertThat(dummyConsolePrinter.getLines(), snapshotMatch(this, "print_out"));
     }
@@ -42,7 +43,7 @@ public class CommandControllerTest {
     @Test
     public void Given有一条记录_When新增一条_Then有两条() {
         todoListRepositoryFlatFile.insert(new TodoItem(1, "item1"));
-        commandController.run(new String[]{"add", "item2"});
+        commandController.run("add", "item2");
         assertThat(todoListRepositoryFlatFile.all(), snapshotMatch(this, "new_item2_result"));
         assertThat(dummyConsolePrinter.getLines(), snapshotMatch(this, "print2_out"));
     }
@@ -50,7 +51,7 @@ public class CommandControllerTest {
     @Test
     public void Given有一条记录_When设置为完成_Then代办设置为完成() {
         todoListRepositoryFlatFile.insert(new TodoItem(1, "item1"));
-        commandController.run(new String[]{"done", "1"});
+        commandController.run("done", "1");
         assertThat(todoListRepositoryFlatFile.all(), snapshotMatch(this, "done_result"));
         assertThat(dummyConsolePrinter.getLines(), snapshotMatch(this, "done_print_out"));
     }
@@ -58,7 +59,7 @@ public class CommandControllerTest {
     @Test
     public void Given有一条正在进行的代办_When列出指令_Then列出所有代办() {
         todoListRepositoryFlatFile.insert(new TodoItem(1, "item1"));
-        commandController.run(new String[]{"list"});
+        commandController.run("list");
         assertThat(dummyConsolePrinter.getLines(), snapshotMatch(this, "list"));
     }
 
@@ -66,7 +67,7 @@ public class CommandControllerTest {
     public void Given有两条其中一条已完成_When列出_Then仅列出未完成() {
         todoListRepositoryFlatFile.insert(new TodoItem(1, "item1"));
         todoListRepositoryFlatFile.insert(new TodoItem(2, "item2", ItemStatus.DONE));
-        commandController.run(new String[]{"list"});
+        commandController.run("list");
         assertThat(dummyConsolePrinter.getLines(), snapshotMatch(this, "list_doing"));
     }
 
@@ -74,7 +75,14 @@ public class CommandControllerTest {
     public void Given有两条其中一条已完成_When列出所有_Then列出所有() {
         todoListRepositoryFlatFile.insert(new TodoItem(1, "item1"));
         todoListRepositoryFlatFile.insert(new TodoItem(2, "item2", ItemStatus.DONE));
-        commandController.run(new String[]{"list", "--all"});
+        commandController.run("list", "--all");
         assertThat(dummyConsolePrinter.getLines(), snapshotMatch(this, "list_all"));
+    }
+
+    @Test
+    public void Given没有登录_When执行List_Then返回请登录() {
+        CurrentUser.user = null;
+        commandController.run("list", "--all");
+        assertThat(dummyConsolePrinter.getLines(), snapshotMatch(this, "not_login"));
     }
 }
