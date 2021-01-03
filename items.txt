@@ -1,4 +1,1 @@
 {"id":1,"item":"item1","status":"DOING"}
-{"id":2,"item":"item1","status":"DOING"}
-{"id":3,"item":"hello","status":"DOING"}
-{"id":4,"item":"todo","status":"DOING"}

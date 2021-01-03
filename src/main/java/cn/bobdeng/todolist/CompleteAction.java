@@ -4,17 +4,16 @@ import cn.bobdeng.todolist.domain.TodoItem;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AddAction implements Action {
+public class CompleteAction implements Action {
     private final TodoListFacade todoListFacade;
-
-    public AddAction(TodoListFacade todoListFacade) {
+    public CompleteAction(TodoListFacade todoListFacade) {
         this.todoListFacade = todoListFacade;
     }
 
     @Override
     public void execute(String[] args) {
-        TodoItem newItem = todoListFacade.newItem(args[1]);
+        todoListFacade.complete(Integer.parseInt(args[1]));
         todoListFacade.printAll();
-        todoListFacade.prompt("Item " + newItem.getId() + " added");
+        todoListFacade.prompt("Item " + Integer.parseInt(args[1]) + " done");
     }
 }

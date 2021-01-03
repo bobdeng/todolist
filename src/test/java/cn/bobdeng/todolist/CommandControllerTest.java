@@ -44,6 +44,13 @@ public class CommandControllerTest {
         commandController.run(new String[]{"add", "item2"});
         assertThat(todoListRepositoryFlatFile.all(), snapshotMatch(this, "new_item2_result"));
         assertThat(dummyConsolePrinter.getLines(), snapshotMatch(this, "print2_out"));
+    }
 
+    @Test
+    public void Given有一条记录_When设置为完成_Then代办设置为完成() {
+        todoListRepositoryFlatFile.insert(new TodoItem(1, "item1"));
+        commandController.run(new String[]{"done", "1"});
+        assertThat(todoListRepositoryFlatFile.all(), snapshotMatch(this, "done_result"));
+        assertThat(dummyConsolePrinter.getLines(), snapshotMatch(this, "done_print_out"));
     }
 }

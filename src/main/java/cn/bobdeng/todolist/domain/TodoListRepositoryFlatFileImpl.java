@@ -76,7 +76,7 @@ public class TodoListRepositoryFlatFileImpl implements TodoListRepository {
         Stream<TodoItem> todoItemStream = all().stream()
                 .map(item -> {
                     if (item.getId() == todoItem.getId()) {
-                        item.complete();
+                        return item.complete();
                     }
                     return item;
                 });
