@@ -5,6 +5,8 @@ import cn.bobdeng.todolist.domain.TodoItem;
 import cn.bobdeng.todolist.domain.TodoListService;
 import org.springframework.stereotype.Service;
 
+import java.util.function.Predicate;
+
 @Service
 public class TodoListFacade {
     private final TodoListService todoListService;
@@ -16,11 +18,7 @@ public class TodoListFacade {
     }
 
     void printAll() {
-        todoListService.all().stream()
-                .map(TodoItem::toString)
-                .forEach(consolePrinter::printLn);
-        consolePrinter.printLn("");
-
+        print(todoItem -> true);
     }
 
     public void complete(int itemId) {
@@ -40,8 +38,12 @@ public class TodoListFacade {
     }
 
     public void printAllDoing() {
+        print(TodoItem::isDoing);
+    }
+
+    void print(Predicate<TodoItem> predicate) {
         todoListService.all().stream()
-                .filter(TodoItem::isDoing)
+                .filter(predicate)
                 .map(TodoItem::toString)
                 .forEach(consolePrinter::printLn);
         consolePrinter.printLn("");

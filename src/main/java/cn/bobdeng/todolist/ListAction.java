@@ -16,18 +16,13 @@ public class ListAction implements Action {
         if (args.length == 2) {
             todoListFacade.printAll();
             CountByStatus count = todoListFacade.countByStatus();
-            todoListFacade.printTail("Total " + count.getTotal() + " " + getItems(count.getTotal()) + ", " + count.getDone() + " " + getItems(count.getDone()) + " done");
+            todoListFacade.printTail(count.toStringOfAll());
             return;
         }
         todoListFacade.printAllDoing();
         CountByStatus count = todoListFacade.countByStatus();
-        todoListFacade.printTail("Total " + count.getTotalDoing() + " " + getItems(count.getTotalDoing()));
+        todoListFacade.printTail(count.toStringOfDoing());
     }
 
-    private String getItems(int total) {
-        if (total <= 1) {
-            return "item";
-        }
-        return "items";
-    }
+
 }
