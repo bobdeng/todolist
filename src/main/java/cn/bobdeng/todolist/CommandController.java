@@ -17,7 +17,7 @@ public class CommandController implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        if (args.length < 2) {
+        if (args.length < 1) {
             return;
         }
         actionFactory.getAction(args[0]).execute(args);

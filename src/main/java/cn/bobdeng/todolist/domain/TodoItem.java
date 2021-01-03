@@ -31,4 +31,12 @@ public class TodoItem {
     public TodoItem complete() {
         return new TodoItem(id, item, ItemStatus.DONE);
     }
+
+    public boolean isComplete() {
+        return this.status == ItemStatus.DONE;
+    }
+
+    public boolean isDoing() {
+        return this.status == ItemStatus.DOING;
+    }
 }

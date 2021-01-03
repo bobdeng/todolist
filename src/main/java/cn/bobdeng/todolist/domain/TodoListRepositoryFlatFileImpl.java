@@ -17,7 +17,7 @@ public class TodoListRepositoryFlatFileImpl implements TodoListRepository {
             int newId = allItems.stream()
                     .mapToInt(TodoItem::getId)
                     .max().orElse(0) + 1;
-            TodoItem newTodoItem = new TodoItem(newId, todoItem.getItem());
+            TodoItem newTodoItem = new TodoItem(newId, todoItem.getItem(), todoItem.getStatus());
             Stream<TodoItem> allItemsStream = Stream.concat(allItems.stream(), Stream.of(newTodoItem));
             saveAll(allItemsStream);
             return newTodoItem;

@@ -1,5 +1,6 @@
 package cn.bobdeng.todolist;
 
+import cn.bobdeng.todolist.domain.CountByStatus;
 import cn.bobdeng.todolist.domain.TodoItem;
 import cn.bobdeng.todolist.domain.TodoListService;
 import org.springframework.stereotype.Service;
@@ -26,11 +27,23 @@ public class TodoListFacade {
         todoListService.complete(itemId);
     }
 
-    public void prompt(String message) {
+    public void printTail(String message) {
         consolePrinter.printLn(message);
     }
 
     public TodoItem newItem(String newItem) {
         return todoListService.newItem(newItem);
+    }
+
+    public CountByStatus countByStatus() {
+        return todoListService.count();
+    }
+
+    public void printAllDoing() {
+        todoListService.all().stream()
+                .filter(TodoItem::isDoing)
+                .map(TodoItem::toString)
+                .forEach(consolePrinter::printLn);
+        consolePrinter.printLn("");
     }
 }

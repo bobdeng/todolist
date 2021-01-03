@@ -1,2 +1,1 @@
-{"id":1,"item":"item1","status":"DONE"}
-{"id":2,"item":"hello","status":"DONE"}
+{"id":1,"item":"item1","status":"DOING"}

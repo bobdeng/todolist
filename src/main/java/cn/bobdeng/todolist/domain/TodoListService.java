@@ -27,4 +27,12 @@ public class TodoListService {
                 .map(TodoItem::complete)
                 .ifPresent(todoListRepository::update);
     }
+
+    public CountByStatus count() {
+        int total = todoListRepository.all().size();
+        int totalDone = (int) todoListRepository.all().stream()
+                .filter(TodoItem::isComplete)
+                .count();
+        return new CountByStatus(total, totalDone);
+    }
 }

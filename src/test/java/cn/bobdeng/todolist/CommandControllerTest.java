@@ -1,5 +1,6 @@
 package cn.bobdeng.todolist;
 
+import cn.bobdeng.todolist.domain.ItemStatus;
 import cn.bobdeng.todolist.domain.TodoItem;
 import cn.bobdeng.todolist.domain.TodoListRepositoryFlatFileImpl;
 import org.junit.Before;
@@ -52,5 +53,20 @@ public class CommandControllerTest {
         commandController.run(new String[]{"done", "1"});
         assertThat(todoListRepositoryFlatFile.all(), snapshotMatch(this, "done_result"));
         assertThat(dummyConsolePrinter.getLines(), snapshotMatch(this, "done_print_out"));
+    }
+
+    @Test
+    public void Given有一条正在进行的代办_When列出指令_Then列出所有代办() {
+        todoListRepositoryFlatFile.insert(new TodoItem(1, "item1"));
+        commandController.run(new String[]{"list"});
+        assertThat(dummyConsolePrinter.getLines(), snapshotMatch(this, "list"));
+    }
+
+    @Test
+    public void Given有两条其中一条已完成_When列出_Then仅列出未完成() {
+        todoListRepositoryFlatFile.insert(new TodoItem(1, "item1"));
+        todoListRepositoryFlatFile.insert(new TodoItem(2, "item2", ItemStatus.DONE));
+        commandController.run(new String[]{"list"});
+        assertThat(dummyConsolePrinter.getLines(), snapshotMatch(this, "list_doing"));
     }
 }

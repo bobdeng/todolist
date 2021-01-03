@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static cn.bobdeng.testtools.SnapshotMatcher.snapshotMatch;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.is;
 
 class TodoListServiceTest {
     private TodoListService todoListService;
@@ -31,5 +32,20 @@ class TodoListServiceTest {
         todoListRepository.insert(new TodoItem(1, "item1"));
         todoListService.complete(1);
         assertThat(dummyDao.all(), snapshotMatch(this, "complete_result"));
+    }
+
+    @Test
+    public void Given有一个代办_When查看统计结果_Then有一个代办() {
+        todoListRepository.insert(new TodoItem(1, "item1"));
+        CountByStatus count = todoListService.count();
+        assertThat(count.getTotal(), is(1));
+    }
+
+    @Test
+    public void Given有一个已完成_When查看统计结果_Then有一个已完成() {
+        todoListRepository.insert(new TodoItem(1, "item1", ItemStatus.DONE));
+        CountByStatus count = todoListService.count();
+        assertThat(count.getDone(), is(1));
+        assertThat(count.getTotal(), is(1));
     }
 }
