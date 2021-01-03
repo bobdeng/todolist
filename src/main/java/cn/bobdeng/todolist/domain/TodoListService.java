@@ -6,10 +6,9 @@ import java.util.List;
 
 @Service
 public class TodoListService {
-    private TodoListRepository todoListRepository;
+    private final TodoListRepository todoListRepository;
 
     public TodoListService(TodoListRepository todoListRepository) {
-
         this.todoListRepository = todoListRepository;
     }
 

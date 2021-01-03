@@ -17,8 +17,10 @@ public class AddAction implements Action {
     @Override
     public void execute(String[] args) {
         TodoItem newItem = todoListService.newItem(args[1]);
-        todoListService.all().stream().map(TodoItem::toString)
+        todoListService.all().stream()
+                .map(TodoItem::toString)
                 .forEach(consolePrinter::printLn);
+        consolePrinter.printLn("");
         consolePrinter.printLn("item " + newItem.getId() + " added");
     }
 }

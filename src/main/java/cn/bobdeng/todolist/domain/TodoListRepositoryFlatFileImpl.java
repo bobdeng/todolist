@@ -34,7 +34,8 @@ public class TodoListRepositoryFlatFileImpl implements TodoListRepository {
     private File getFile() throws IOException {
         File file = new File("items.txt");
         if (!file.exists()) {
-            file.createNewFile();
+            boolean newFileSuccess = file.createNewFile();
+            assert newFileSuccess;
         }
         return file;
     }
