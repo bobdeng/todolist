@@ -22,6 +22,9 @@ public class TodoItem {
 
     @Override
     public String toString() {
+        if (status == ItemStatus.DONE) {
+            return String.format("%d. [Done] %s", this.id, this.item);
+        }
         return String.format("%d. %s", this.id, this.item);
     }
 
