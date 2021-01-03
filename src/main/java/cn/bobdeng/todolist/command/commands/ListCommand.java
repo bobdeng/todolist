@@ -1,14 +1,14 @@
-package cn.bobdeng.todolist.command.actions;
+package cn.bobdeng.todolist.command.commands;
 
 import cn.bobdeng.todolist.command.TodoListFacade;
 import cn.bobdeng.todolist.domain.todo.CountByStatus;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ListAction implements Action, ActionNeedLogin {
+public class ListCommand implements Command, CommandNeedLogin {
     private final TodoListFacade todoListFacade;
 
-    public ListAction(TodoListFacade todoListFacade) {
+    public ListCommand(TodoListFacade todoListFacade) {
         this.todoListFacade = todoListFacade;
     }
 

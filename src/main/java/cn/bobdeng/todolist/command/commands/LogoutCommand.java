@@ -1,15 +1,15 @@
-package cn.bobdeng.todolist.command.actions;
+package cn.bobdeng.todolist.command.commands;
 
 import cn.bobdeng.todolist.command.ConsolePrinter;
 import cn.bobdeng.todolist.Session;
 import org.springframework.stereotype.Service;
 
 @Service
-public class LogoutAction implements Action, ActionNeedLogin {
+public class LogoutCommand implements Command, CommandNeedLogin {
     private final ConsolePrinter consolePrinter;
     private final Session session;
 
-    public LogoutAction(ConsolePrinter consolePrinter, Session session) {
+    public LogoutCommand(ConsolePrinter consolePrinter, Session session) {
         this.consolePrinter = consolePrinter;
         this.session = session;
     }

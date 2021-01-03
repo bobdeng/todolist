@@ -1,9 +1,9 @@
-package cn.bobdeng.todolist.command.actions;
+package cn.bobdeng.todolist.command.commands;
 
 import org.springframework.stereotype.Service;
 
 @Service
-public class ExitAction implements Action {
+public class ExitCommand implements Command {
 
     @Override
     public void execute(String[] args) {

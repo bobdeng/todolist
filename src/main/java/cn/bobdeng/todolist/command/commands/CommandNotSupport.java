@@ -1,13 +1,13 @@
-package cn.bobdeng.todolist.command.actions;
+package cn.bobdeng.todolist.command.commands;
 
 import cn.bobdeng.todolist.command.ConsolePrinter;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ActionNotSupport implements Action {
+public class CommandNotSupport implements Command {
     private final ConsolePrinter consolePrinter;
 
-    public ActionNotSupport(ConsolePrinter consolePrinter) {
+    public CommandNotSupport(ConsolePrinter consolePrinter) {
         this.consolePrinter = consolePrinter;
     }
 

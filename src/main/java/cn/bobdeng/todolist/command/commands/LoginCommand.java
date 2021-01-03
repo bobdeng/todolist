@@ -1,4 +1,4 @@
-package cn.bobdeng.todolist.command.actions;
+package cn.bobdeng.todolist.command.commands;
 
 import cn.bobdeng.todolist.Session;
 import cn.bobdeng.todolist.command.ConsolePrinter;
@@ -7,13 +7,13 @@ import cn.bobdeng.todolist.domain.user.UserService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class LoginAction implements Action {
+public class LoginCommand implements Command {
     private final UserService userService;
     private final ConsoleReader consoleReader;
     private final ConsolePrinter consolePrinter;
     private final Session session;
 
-    public LoginAction(UserService userService, ConsoleReader consoleReader, ConsolePrinter consolePrinter, Session session) {
+    public LoginCommand(UserService userService, ConsoleReader consoleReader, ConsolePrinter consolePrinter, Session session) {
         this.userService = userService;
         this.consoleReader = consoleReader;
         this.consolePrinter = consolePrinter;
