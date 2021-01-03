@@ -2,7 +2,7 @@ package cn.bobdeng.todolist;
 
 import cn.bobdeng.todolist.actions.Action;
 import cn.bobdeng.todolist.actions.ActionFactory;
-import cn.bobdeng.todolist.actions.NeedLogin;
+import cn.bobdeng.todolist.actions.ActionNeedLogin;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
@@ -36,7 +36,7 @@ public class CommandController implements CommandLineRunner {
 
     private void executeAction(String[] args) {
         Action action = actionFactory.getAction(args[0]);
-        if (action instanceof NeedLogin && !session.loggedIn()) {
+        if (action instanceof ActionNeedLogin && !session.loggedIn()) {
             consolePrinter.printLn("Please login first!");
             return;
         }

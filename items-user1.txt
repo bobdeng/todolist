@@ -1,3 +1,2 @@
-{"index":1,"item":"item1","status":"DONE"}
+{"index":1,"item":"item1","status":"DOING"}
 {"index":2,"item":"item2","status":"DONE"}
-{"index":3,"item":"做午饭","status":"DONE"}

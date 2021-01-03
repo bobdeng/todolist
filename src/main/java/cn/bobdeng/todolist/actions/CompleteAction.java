@@ -4,7 +4,7 @@ import cn.bobdeng.todolist.TodoListFacade;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CompleteAction implements Action,NeedLogin {
+public class CompleteAction implements Action, ActionNeedLogin {
     private final TodoListFacade todoListFacade;
     public CompleteAction(TodoListFacade todoListFacade) {
         this.todoListFacade = todoListFacade;
