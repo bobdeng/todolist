@@ -14,6 +14,7 @@ import java.io.InputStreamReader;
 @SpringBootApplication
 public class TodolistApplication {
     public static void main(String[] args) throws Exception {
+        System.out.print("todo ");
         ConfigurableApplicationContext applicationContext = SpringApplication.run(TodolistApplication.class, args);
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         CommandController commandController = applicationContext.getBean(CommandController.class);

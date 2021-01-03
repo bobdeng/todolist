@@ -33,14 +33,17 @@ public class CommandControllerTest {
 
     @Test
     public void Given列表为空_When添加新列表_Then列表有一条() throws Exception {
-        commandController.run(new String[]{"add","item1"});
+        commandController.run(new String[]{"add", "item1"});
         assertThat(todoListRepositoryFlatFile.all(), snapshotMatch(this, "new_item_result"));
+        assertThat(dummyConsolePrinter.getLines(), snapshotMatch(this, "print_out"));
     }
 
     @Test
     public void Given有一条记录_When新增一条_Then有两条() {
-        todoListRepositoryFlatFile.save(new TodoItem(1,"item1"));
-        commandController.run(new String[]{"add","item2"});
+        todoListRepositoryFlatFile.save(new TodoItem(1, "item1"));
+        commandController.run(new String[]{"add", "item2"});
         assertThat(todoListRepositoryFlatFile.all(), snapshotMatch(this, "new_item2_result"));
+        assertThat(dummyConsolePrinter.getLines(), snapshotMatch(this, "print2_out"));
+
     }
 }

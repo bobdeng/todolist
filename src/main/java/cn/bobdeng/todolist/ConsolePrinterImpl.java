@@ -10,4 +10,9 @@ public class ConsolePrinterImpl implements ConsolePrinter {
     public void printLn(String line) {
         System.out.println(line);
     }
+
+    @Override
+    public void print(String todo) {
+        System.out.print(todo);
+    }
 }

@@ -13,4 +13,9 @@ public class TodoItem {
         this.item = item;
         this.status = ItemStatus.DOING;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%d. %s", this.id, this.item);
+    }
 }

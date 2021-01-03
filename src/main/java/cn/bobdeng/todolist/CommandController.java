@@ -8,9 +8,11 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class CommandController implements CommandLineRunner {
     private final ActionFactory actionFactory;
+    private final ConsolePrinter consolePrinter;
 
-    public CommandController(ActionFactory actionFactory) {
+    public CommandController(ActionFactory actionFactory, ConsolePrinter consolePrinter) {
         this.actionFactory = actionFactory;
+        this.consolePrinter = consolePrinter;
     }
 
     @Override
@@ -19,5 +21,7 @@ public class CommandController implements CommandLineRunner {
             return;
         }
         actionFactory.getAction(args[0]).execute(args);
+        consolePrinter.printLn("");
+        consolePrinter.print("todo ");
     }
 }
