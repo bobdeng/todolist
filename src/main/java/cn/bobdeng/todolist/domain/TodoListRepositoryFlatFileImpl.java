@@ -13,18 +13,12 @@ public class TodoListRepositoryFlatFileImpl implements TodoListRepository {
     @Override
     public TodoItem insert(TodoItem todoItem) {
         try {
-            List<TodoItem> allItems = all();
-            int newId = allItems.stream()
-                    .mapToInt(TodoItem::getIndex)
-                    .max().orElse(0) + 1;
-            TodoItem newTodoItem = new TodoItem(newId, todoItem.getItem(), todoItem.getStatus());
-            Stream<TodoItem> allItemsStream = Stream.concat(allItems.stream(), Stream.of(newTodoItem));
+            Stream<TodoItem> allItemsStream = Stream.concat(all().stream(), Stream.of(todoItem));
             saveAll(allItemsStream);
-            return newTodoItem;
+            return todoItem;
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
-        return todoItem;
     }
 
     private void saveAll(Stream<TodoItem> allItemsStream) throws IOException {
@@ -54,7 +48,6 @@ public class TodoListRepositoryFlatFileImpl implements TodoListRepository {
                     .map(json -> new Gson().fromJson(json, TodoItem.class))
                     .collect(Collectors.toList());
         } catch (Exception e) {
-            e.printStackTrace();
             throw new RuntimeException(e);
         }
 
@@ -66,7 +59,6 @@ public class TodoListRepositoryFlatFileImpl implements TodoListRepository {
             boolean delete = getFile().delete();
             assert delete;
         } catch (IOException e) {
-            e.printStackTrace();
             throw new RuntimeException(e);
         }
     }

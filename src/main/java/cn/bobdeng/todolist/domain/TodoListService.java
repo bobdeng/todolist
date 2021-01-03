@@ -13,7 +13,9 @@ public class TodoListService {
     }
 
     public TodoItem newItem(String todoItem) {
-        return todoListRepository.insert(new TodoItem(1, todoItem));
+        int newIndex = todoListRepository.all().stream().mapToInt(TodoItem::getIndex)
+                .max().orElse(0) + 1;
+        return todoListRepository.insert(new TodoItem(newIndex, todoItem));
     }
 
     public List<TodoItem> all() {
