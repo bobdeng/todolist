@@ -12,6 +12,11 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
+    public void insert(User user) {
+        dummyDao.insert(user);
+    }
+
+    @Override
     public List<User> all() {
         return dummyDao.all();
     }
