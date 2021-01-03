@@ -52,4 +52,12 @@ public class LoginTest {
         assertThat(CurrentUser.user, nullValue());
         assertThat(consolePrinter.getLines(), snapshotMatch(this, "login_fail"));
     }
+
+    @Test
+    public void Given已经登录_When登出_Then当前用户为空() {
+        CurrentUser.user = "user1";
+        commandController.run("logout");
+        assertThat(CurrentUser.user, nullValue());
+        assertThat(consolePrinter.getLines(), snapshotMatch(this, "logout"));
+    }
 }
