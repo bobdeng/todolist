@@ -26,6 +26,7 @@ public class CommandController implements CommandLineRunner {
             return;
         }
         executeAction(args);
+        System.out.println();
         consolePrinter.print("todo ");
     }
 
