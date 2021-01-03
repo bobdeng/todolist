@@ -1,5 +1,6 @@
 package cn.bobdeng.todolist.domain;
 
+import cn.bobdeng.dummydao.DummyDao;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -7,21 +8,29 @@ import java.util.List;
 
 @Getter
 public class TodoListRepositoryImpl implements TodoListRepository {
+    final DummyDao<TodoItem,Integer> dummyDao;
     private List<TodoItem> items = new ArrayList<>();
 
+    public TodoListRepositoryImpl(DummyDao<TodoItem, Integer> dummyDao) {
+        this.dummyDao = dummyDao;
+    }
+
     @Override
-    public TodoItem save(TodoItem todoItem) {
-        items.add(todoItem);
-        return todoItem;
+    public TodoItem insert(TodoItem todoItem) {
+        return dummyDao.save(todoItem);
     }
 
     @Override
     public List<TodoItem> all() {
-        return new ArrayList<>(items);
+        return dummyDao.all();
     }
 
     @Override
     public void clear() {
-        items.clear();
+    }
+
+    @Override
+    public void update(TodoItem todoItem) {
+        dummyDao.save(todoItem);
     }
 }

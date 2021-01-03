@@ -40,7 +40,7 @@ public class CommandControllerTest {
 
     @Test
     public void Given有一条记录_When新增一条_Then有两条() {
-        todoListRepositoryFlatFile.save(new TodoItem(1, "item1"));
+        todoListRepositoryFlatFile.insert(new TodoItem(1, "item1"));
         commandController.run(new String[]{"add", "item2"});
         assertThat(todoListRepositoryFlatFile.all(), snapshotMatch(this, "new_item2_result"));
         assertThat(dummyConsolePrinter.getLines(), snapshotMatch(this, "print2_out"));
