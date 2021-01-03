@@ -1,4 +1,4 @@
-package cn.bobdeng.todolist.domain;
+package cn.bobdeng.todolist.domain.todo;
 
 import cn.bobdeng.dummydao.AutoIntegerIdGenerator;
 import cn.bobdeng.dummydao.DummyDao;

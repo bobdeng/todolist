@@ -1,6 +1,6 @@
 package cn.bobdeng.todolist;
 
-import cn.bobdeng.todolist.domain.CountByStatus;
+import cn.bobdeng.todolist.domain.todo.CountByStatus;
 import org.springframework.stereotype.Service;
 
 @Service

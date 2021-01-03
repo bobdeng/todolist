@@ -1,8 +1,8 @@
 package cn.bobdeng.todolist;
 
-import cn.bobdeng.todolist.domain.ItemStatus;
-import cn.bobdeng.todolist.domain.TodoItem;
-import cn.bobdeng.todolist.domain.TodoListRepositoryFlatFileImpl;
+import cn.bobdeng.todolist.domain.todo.ItemStatus;
+import cn.bobdeng.todolist.domain.todo.TodoItem;
+import cn.bobdeng.todolist.domain.todo.TodoListRepositoryFlatFileImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,6 +1,8 @@
-package cn.bobdeng.todolist.domain;
+package cn.bobdeng.todolist.domain.todo;
 
 import cn.bobdeng.dummydao.DummyDao;
+import cn.bobdeng.todolist.domain.todo.TodoItem;
+import cn.bobdeng.todolist.domain.todo.TodoListRepository;
 import lombok.Getter;
 
 import java.util.ArrayList;

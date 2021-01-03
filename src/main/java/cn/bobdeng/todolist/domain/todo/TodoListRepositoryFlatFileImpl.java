@@ -1,4 +1,4 @@
-package cn.bobdeng.todolist.domain;
+package cn.bobdeng.todolist.domain.todo;
 
 import cn.bobdeng.todolist.CurrentUser;
 import com.google.gson.Gson;

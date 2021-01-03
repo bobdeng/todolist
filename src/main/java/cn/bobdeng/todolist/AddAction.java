@@ -1,6 +1,6 @@
 package cn.bobdeng.todolist;
 
-import cn.bobdeng.todolist.domain.TodoItem;
+import cn.bobdeng.todolist.domain.todo.TodoItem;
 import org.springframework.stereotype.Service;
 
 @Service

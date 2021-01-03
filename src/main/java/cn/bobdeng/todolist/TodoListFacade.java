@@ -1,8 +1,8 @@
 package cn.bobdeng.todolist;
 
-import cn.bobdeng.todolist.domain.CountByStatus;
-import cn.bobdeng.todolist.domain.TodoItem;
-import cn.bobdeng.todolist.domain.TodoListService;
+import cn.bobdeng.todolist.domain.todo.CountByStatus;
+import cn.bobdeng.todolist.domain.todo.TodoItem;
+import cn.bobdeng.todolist.domain.todo.TodoListService;
 import org.springframework.stereotype.Service;
 
 import java.util.function.Predicate;
