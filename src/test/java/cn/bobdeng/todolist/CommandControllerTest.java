@@ -86,4 +86,10 @@ public class CommandControllerTest {
         commandController.run("list", "--all");
         assertThat(dummyConsolePrinter.getLines(), snapshotMatch(this, "not_login"));
     }
+
+    @Test
+    public void When执行不支持的命令_Then返回命令错误() {
+        commandController.run("not_support");
+        assertThat(dummyConsolePrinter.getLines(), snapshotMatch(this, "not_support"));
+    }
 }

@@ -9,11 +9,14 @@ import java.util.stream.Collectors;
 @Service
 public class ActionFactory {
     private final Map<String, Action> actions;
+    private final ActionNotSupport actionNotSupport;
 
-    public ActionFactory(ApplicationContext applicationContext) {
+    public ActionFactory(ApplicationContext applicationContext, ActionNotSupport actionNotSupport) {
         actions = applicationContext.getBeansOfType(Action.class)
                 .values()
-                .stream().collect(Collectors.toMap(Action::actionName, action -> action));
+                .stream()
+                .collect(Collectors.toMap(Action::actionName, action -> action));
+        this.actionNotSupport = actionNotSupport;
     }
 
     public Action getAction(String actionName) {
@@ -21,6 +24,6 @@ public class ActionFactory {
         if (action != null) {
             return action;
         }
-        throw new RuntimeException("not support");
+        return actionNotSupport;
     }
 }
