@@ -44,7 +44,8 @@ public class TodoListFacade {
     void print(Predicate<TodoItem> predicate) {
         todoListService.all().stream()
                 .filter(predicate)
-                .map(TodoItem::toString)
+                .map(TodoItemFormatter::new)
+                .map(TodoItemFormatter::format)
                 .forEach(consolePrinter::printLn);
         consolePrinter.printLn("");
     }

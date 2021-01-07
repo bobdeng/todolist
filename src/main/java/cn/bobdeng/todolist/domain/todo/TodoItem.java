@@ -20,14 +20,6 @@ public class TodoItem {
         this.status = status;
     }
 
-    @Override
-    public String toString() {
-        if (status == ItemStatus.DONE) {
-            return String.format("%d. [Done] %s", this.index, this.item);
-        }
-        return String.format("%d. %s", this.index, this.item);
-    }
-
     public TodoItem complete() {
         return new TodoItem(index, item, ItemStatus.DONE);
     }
